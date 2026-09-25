@@ -1,0 +1,16 @@
+{
+  "name": "central-financeira", "version": "1.0.0", "private": true, "description": "Central de Gerenciamento Financeiro",
+  "author": "Seu Nome <voce@email.com>", "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite", "build": "vite build",
+    "electron:dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && cross-env ELECTRON_DEV=1 electron .\"",
+    "electron:build": "vite build && electron-builder"
+  },
+  "dependencies": { "react": "^18.3.1", "react-dom": "^18.3.1", "recharts": "^2.12.7", "jspdf": "^2.5.1", "jspdf-autotable": "^3.8.2" },
+  "devDependencies": { "@vitejs/plugin-react": "^4.3.1", "vite": "^5.4.0", "electron": "^31.3.0", "electron-builder": "^24.13.3", "concurrently": "^8.2.2", "wait-on": "^7.2.0", "cross-env": "^7.0.3" },
+  "build": {
+    "appId": "com.portfolio.centralfinanceira", "productName": "Central Financeira",
+    "files": ["dist/**", "electron/**"], "directories": { "output": "release" },
+    "win": { "target": "nsis" }, "mac": { "target": "dmg" }, "linux": { "target": "AppImage" }
+  }
+}
